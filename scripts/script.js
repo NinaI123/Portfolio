@@ -17,3 +17,22 @@ const appearOnScroll = new IntersectionObserver(function (entries, observer) {
 faders.forEach(fader => {
   appearOnScroll.observe(fader);
 });
+
+// Smooth scrolling for nav links
+document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    target.scrollIntoView({ behavior: "smooth" });
+  });
+});
+
+// Optional: Dark mode toggle
+const toggle = document.getElementById("darkToggle");
+if (toggle) {
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+  });
+}
+// Responsive navigation toggle
+const navToggle = document.querySelector('.nav-toggle');  
