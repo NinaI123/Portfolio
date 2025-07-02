@@ -34,6 +34,128 @@
             overflow-x: hidden;
         }
 
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            margin: auto;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-media {
+            max-width: 100%;
+            max-height: 80vh;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: -10px;
+            color: var(--white);
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.7);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--electric-blue);
+        }
+
+        .close-modal:hover {
+            color: var(--electric-blue);
+            transform: rotate(90deg);
+        }
+
+        .modal-caption {
+            color: var(--white);
+            text-align: center;
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+        }
+
+        /* Project card with media preview */
+        .project-image {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--dark-gray), var(--medium-gray));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--electric-blue);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-image .play-icon {
+            position: absolute;
+            color: var(--electric-blue);
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-image:hover .play-icon {
+            opacity: 1;
+        }
+
+        /* Rest of your existing styles... */
         /* Navigation */
         nav {
             position: fixed;
@@ -256,22 +378,6 @@
         .project-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(45deg, var(--dark-gray), var(--medium-gray));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--electric-blue);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .project-image {
-            transform: scale(1.05);
         }
 
         .project-content {
@@ -516,6 +622,11 @@
                 padding-left: 1rem;
                 padding-right: 1rem;
             }
+            
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -547,6 +658,17 @@
     </style>
 </head>
 <body>
+    <!-- Modal for media display -->
+    <div id="mediaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalMediaContainer">
+                <!-- Content will be inserted here by JavaScript -->
+            </div>
+            <div id="modalCaption" class="modal-caption"></div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
@@ -611,8 +733,9 @@
         <h2 class="section-title scroll-reveal">Projects</h2>
         <div class="projects-grid">
             <div class="project-card scroll-reveal">
-                <div class="project-image">
-                    <i class="fas fa-binary"></i>
+                <div class="project-image" onclick="openMediaModal('https://example.com/videos/binary-tool.mp4', 'Binary Visualizer Tool in action', 'video')">
+                    <img src="https://example.com/images/binary-tool-preview.jpg" alt="Binary Visualizer Tool preview">
+                    <div class="play-icon"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Binary Visualizer Tool</h3>
@@ -624,14 +747,15 @@
                     </div>
                     <div class="project-links">
                         <a href="#" class="project-link">GitHub</a>
-                        <a href="#" class="project-link">Live Demo</a>
+                        <a href="#" class="project-link">Demo</a>
                     </div>
                 </div>
             </div>
 
             <div class="project-card scroll-reveal">
-                <div class="project-image">
-                    <i class="fas fa-chart-line"></i>
+                <div class="project-image" onclick="openMediaModal('https://example.com/videos/trading-simulator.mp4', 'Unity Trading Simulator demo', 'video')">
+                    <img src="https://example.com/images/trading-simulator-preview.jpg" alt="Trading Simulator preview">
+                    <div class="play-icon"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Unity Trading Simulator</h3>
@@ -649,8 +773,8 @@
             </div>
 
             <div class="project-card scroll-reveal">
-                <div class="project-image">
-                    <i class="fas fa-tshirt"></i>
+                <div class="project-image" onclick="openMediaModal('https://example.com/images/calligraphy-tshirt-large.jpg', 'Urdu Calligraphy T-Shirt Design', 'image')">
+                    <img src="https://example.com/images/calligraphy-tshirt-preview.jpg" alt="Calligraphy T-Shirt preview">
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Urdu Calligraphy T-Shirts</h3>
@@ -668,8 +792,9 @@
             </div>
 
             <div class="project-card scroll-reveal">
-                <div class="project-image">
-                    <i class="fas fa-robot"></i>
+                <div class="project-image" onclick="openMediaModal('https://example.com/videos/algorithm-visualizer.mp4', 'Algorithm Visualizer demonstration', 'video')">
+                    <img src="https://example.com/images/algorithm-visualizer-preview.jpg" alt="Algorithm Visualizer preview">
+                    <div class="play-icon"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Algorithm Visualizer</h3>
@@ -687,8 +812,8 @@
             </div>
 
             <div class="project-card scroll-reveal">
-                <div class="project-image">
-                    <i class="fas fa-mobile-alt"></i>
+                <div class="project-image" onclick="openMediaModal('https://example.com/images/portfolio-app-screens.jpg', 'Creative Portfolio App screens', 'image')">
+                    <img src="https://example.com/images/portfolio-app-preview.jpg" alt="Portfolio App preview">
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Creative Portfolio App</h3>
@@ -706,8 +831,9 @@
             </div>
 
             <div class="project-card scroll-reveal">
-                <div class="project-image">
-                    <i class="fas fa-database"></i>
+                <div class="project-image" onclick="openMediaModal('https://example.com/videos/dp-solver.mp4', 'Dynamic Programming Solver in action', 'video')">
+                    <img src="https://example.com/images/dp-solver-preview.jpg" alt="DP Solver preview">
+                    <div class="play-icon"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Dynamic Programming Solver</h3>
@@ -792,6 +918,60 @@
     </footer>
 
     <script>
+        // Modal functionality
+        const modal = document.getElementById('mediaModal');
+        const modalMediaContainer = document.getElementById('modalMediaContainer');
+        const modalCaption = document.getElementById('modalCaption');
+        const closeModal = document.querySelector('.close-modal');
+
+        function openMediaModal(src, caption, type) {
+            modalMediaContainer.innerHTML = '';
+            
+            if (type === 'video') {
+                modalMediaContainer.innerHTML = `
+                    <video class="modal-media" controls autoplay>
+                        <source src="${src}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                `;
+            } else if (type === 'image') {
+                modalMediaContainer.innerHTML = `
+                    <img class="modal-media" src="${src}" alt="${caption}">
+                `;
+            }
+            
+            modalCaption.textContent = caption;
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMediaModal() {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+            
+            // Pause any videos when closing
+            const videos = modalMediaContainer.querySelectorAll('video');
+            videos.forEach(video => {
+                video.pause();
+            });
+        }
+
+        closeModal.addEventListener('click', closeMediaModal);
+
+        // Close modal when clicking outside the content
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeMediaModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                closeMediaModal();
+            }
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
