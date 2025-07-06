@@ -311,7 +311,7 @@
         /* Skills Section */
         .skills-grid {
             display: grid;
-            /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -322,7 +322,7 @@
             border-radius: 15px;
             border: 1px solid rgba(0, 212, 255, 0.3);
             backdrop-filter: blur(10px);
-            /* transition: all 0.3s ease; */
+            transition: all 0.3s ease;
         }
 
         .skill-category:hover {
@@ -350,7 +350,7 @@
             border-radius: 25px;
             border: 1px solid rgba(0, 212, 255, 0.3);
             font-size: 0.9rem;
-            /* transition: all 0.3s ease; */
+            transition: all 0.3s ease;
         }
 
         .skill-tag:hover {
@@ -1161,10 +1161,10 @@
         });
 
         // Add floating animation to skill tags
-        document.querySelectorAll('.skill-tag').forEach((tag, index) => {
-            tag.style.animationDelay = `${index * 0.1}s`;
-            tag.classList.add('floating');
-        });
+        // document.querySelectorAll('.skill-tag').forEach((tag, index) => {
+        //     tag.style.animationDelay = `${index * 0.1}s`;
+        //     tag.classList.add('floating');
+        // });
 
         // Particle effect for hero section
         function createParticles() {
