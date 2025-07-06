@@ -311,7 +311,7 @@
         /* Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -322,7 +322,7 @@
             border-radius: 15px;
             border: 1px solid rgba(0, 212, 255, 0.3);
             backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            /* transition: all 0.3s ease; */
         }
 
         .skill-category:hover {
@@ -350,7 +350,7 @@
             border-radius: 25px;
             border: 1px solid rgba(0, 212, 255, 0.3);
             font-size: 0.9rem;
-            transition: all 0.3s ease;
+            /* transition: all 0.3s ease; */
         }
 
         .skill-tag:hover {
@@ -706,24 +706,39 @@
                 <h3><i class="fas fa-code"></i> Programming</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">Python</span>
-                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">PHP</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
                     <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Bash</span>
+
+
                 </div>
             </div>
             <div class="skill-category scroll-reveal">
-                <h3><i class="fas fa-brain"></i> Concepts</h3>
+                <h3><i class="fas fa-brain"></i> Tools</h3>
                 <div class="skill-tags">
-                    <span class="skill-tag">Recursion</span>
-                    <span class="skill-tag">Binary Manipulation</span>
-                    <span class="skill-tag">Dynamic Programming</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Apache</span>
+                    <span class="skill-tag">Net Beans</span>
+                    <span class="skill-tag">Hugging Face</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Jupyter Notebook</span>
+                    <span class="skill-tag">VS Code</span>
                 </div>
             </div>
             <div class="skill-category scroll-reveal">
-                <h3><i class="fas fa-palette"></i> Artistic</h3>
+                <h3><i class="fas fa-palette"></i> Frameworks & Libraries</h3>
                 <div class="skill-tags">
-                    <span class="skill-tag">Urdu Calligraphy</span>
-                    <span class="skill-tag">Minimalist Aesthetics</span>
-                    <span class="skill-tag">T-Shirt Design</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">Tensor Flow</span>
+                    <span class="skill-tag">Sci-kit learn</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">Selenium</span>
+                    <span class="skill-tag">Numpy</span>
+                    <span class="skill-tag">Plotly</span>
                 </div>
             </div>
         </div>
@@ -822,7 +837,7 @@
                 </div>
             </div>
         </div>
-        
+
     <!-- Solar Panel Image Processing System -->
     <div class="project-card scroll-reveal">
       <div class="project-image" onclick="openMediaModal('https://example.com/videos/solar-tracking.mp4', 'Solar Panel Tracker Demo', 'image')">
@@ -882,105 +897,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="project-card scroll-reveal">
-                <div class="project-image" onclick="openMediaModal('https://example.com/videos/trading-simulator.mp4', 'Unity Trading Simulator demo', 'video')">
-                    <img src="https://example.com/images/trading-simulator-preview.jpg" alt="Trading Simulator preview">
-                    <div class="play-icon"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Unity Trading Simulator</h3>
-                    <p class="project-description">Comprehensive trading simulation platform built with Unity, featuring real-time market data and advanced analytics.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Unity</span>
-                        <span class="project-tag">C#</span>
-                        <span class="project-tag">Financial Modeling</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">GitHub</a>
-                        <a href="#" class="project-link">Learn More</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card scroll-reveal">
-                <div class="project-image" onclick="openMediaModal('https://example.com/images/calligraphy-tshirt-large.jpg', 'Urdu Calligraphy T-Shirt Design', 'image')">
-                    <img src="https://example.com/images/calligraphy-tshirt-preview.jpg" alt="Calligraphy T-Shirt preview">
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Urdu Calligraphy T-Shirts</h3>
-                    <p class="project-description">Custom t-shirt designs featuring traditional Urdu calligraphy with modern minimalist aesthetics and cultural significance.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Design</span>
-                        <span class="project-tag">Calligraphy</span>
-                        <span class="project-tag">Cultural Art</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">Portfolio</a>
-                        <a href="#" class="project-link">Shop</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card scroll-reveal">
-                <div class="project-image" onclick="openMediaModal('https://example.com/videos/algorithm-visualizer.mp4', 'Algorithm Visualizer demonstration', 'video')">
-                    <img src="https://example.com/images/algorithm-visualizer-preview.jpg" alt="Algorithm Visualizer preview">
-                    <div class="play-icon"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Algorithm Visualizer</h3>
-                    <p class="project-description">Interactive platform for visualizing sorting and searching algorithms with step-by-step execution and performance metrics.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">Data Structures</span>
-                        <span class="project-tag">Visualization</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">GitHub</a>
-                        <a href="#" class="project-link">Demo</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card scroll-reveal">
-                <div class="project-image" onclick="openMediaModal('https://example.com/images/portfolio-app-screens.jpg', 'Creative Portfolio App screens', 'image')">
-                    <img src="https://example.com/images/portfolio-app-preview.jpg" alt="Portfolio App preview">
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Creative Portfolio App</h3>
-                    <p class="project-description">Mobile application showcasing digital art and calligraphy work with interactive galleries and social features.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">React Native</span>
-                        <span class="project-tag">UI/UX</span>
-                        <span class="project-tag">Portfolio</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">GitHub</a>
-                        <a href="#" class="project-link">App Store</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card scroll-reveal">
-                <div class="project-image" onclick="openMediaModal('https://example.com/videos/dp-solver.mp4', 'Dynamic Programming Solver in action', 'video')">
-                    <img src="https://example.com/images/dp-solver-preview.jpg" alt="DP Solver preview">
-                    <div class="play-icon"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Dynamic Programming Solver</h3>
-                    <p class="project-description">Comprehensive tool for solving complex dynamic programming problems with visual step-by-step solutions and optimization analysis.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">C++</span>
-                        <span class="project-tag">Algorithms</span>
-                        <span class="project-tag">Optimization</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">GitHub</a>
-                        <a href="#" class="project-link">Documentation</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section> -->
 
     <!-- Experience Section -->
